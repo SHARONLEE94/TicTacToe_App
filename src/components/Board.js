@@ -4,11 +4,13 @@ import './Board.css'
 
 const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
+  const [xIsNext, setXIsNext] = useState(true);
 
   const handleClick = (i) => {
     const newSquares = squares.slice();
-    newSquares[i]  = 'X';
+    newSquares[i]  = xIsNext ? 'X' : 'O';
     setSquares(newSquares);
+    setXIsNext(prev => !prev); // = (유사) setXIsNext(!xIsNext)
   }
 
   const renderSquare = (i) => {
@@ -17,7 +19,8 @@ const Board = () => {
               onClick = {() => {handleClick(i)}} />
   }
 
-  const status = 'Next player: X, O';
+  const status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+
   return (
     <div>
       <div className='status'>{status}</div>
