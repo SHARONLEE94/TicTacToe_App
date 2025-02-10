@@ -16,3 +16,21 @@
 
 ## 🎯 목표
 이 프로젝트를 통해 React의 기본 개념을 탄탄히 다지고, 이후 더 복잡한 프로젝트에도 적용할 수 있는 기반 마련
+
+## 사용된 기술 및 개념
+
+### Props
+- Props는 Properties의 줄임말
+- Props는 상속하는 부모 컴포넌트로부터 자녀 컴포넌트에 데이터를 전달하는 방법
+- Props는 읽기 전용으로 자녀 컴포넌트 입장에서는 변하지 않는다.
+- 즉, 데이터를 변경하고 싶다면 부모 컴포넌트에서 state를 변경해야 한다.
+
+```js
+// A 부모 컴포넌트
+renderSquare(i) {
+    return <Square value = {i}/> 
+  }
+// B 자식 컴포넌트
+<button className='square'>
+  {this.props.value}
+</button>
