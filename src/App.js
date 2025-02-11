@@ -47,6 +47,17 @@ function App() {
     setXIsNext(current => !current);
   }
 
+  const moves = history.map((step, move) => {
+    const desc = move
+      ? 'Go to move #' + move
+      : 'Go to game start'
+    return(
+      <li key={move}>
+        <button>{desc}</button>
+      </li>
+    )
+  })
+
   return (
     <div className="game">
       <div className="game-board">
@@ -55,8 +66,8 @@ function App() {
           onClick={ (i) => {handleClick(i)} }/>
       </div>
       <div className="game-info">
-        <div>{status}</div>
-        <div>{/* todo */}</div>
+        <div className="status">{status}</div>
+        <div>{moves}</div>
       </div>
     </div>
   );
