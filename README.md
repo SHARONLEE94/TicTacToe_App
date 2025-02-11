@@ -19,7 +19,7 @@
 
 ## 사용된 개념
 
-### #1. 클래스형 버전
+## #1. 클래스형 버전
 ### Props
 - Props는 Properties의 줄임말
 - Props는 상속하는 부모 컴포넌트로부터 자녀 컴포넌트에 데이터를 전달하는 방법
@@ -52,7 +52,8 @@ renderSquare(i) {
 - super(props)를 호출해야 부모 클래스 (React.Component)의 생성자가 실행되면서 this.props가 정상적으로 설정됨.
 - super()만 호출하고 props를 전달하지 않으면 this.props가 undefined가 될 수 있음.
 - constructor를 사용할 때는 항상 super(props)를 호출하는 것이 React의 올바른 패턴.
-👉 **** 하지만 ***** React에서는 constructor를 생략하고 state를 직접 정의하는 방식이 더 많이 사용됨
+👉 **** 하지만 ***** React에서는 constructor를 생략하고 state를 직접 정의하는 방식이 더 많이 사용됨.
+
 ```js
 class MyComponent extends React.Component {
   state = {
@@ -70,5 +71,35 @@ class MyComponent extends React.Component {
 - 최적화를 쉽게 하기 위해 (React.memo, useMemo 등 활용)
 - Redux 같은 라이브러리와 잘 호환되도록 하기 위해
 - 디버깅을 쉽게 하기 위해
-👉 불변성을 지키는 가장 쉬운 방법은 spread 연산자(...), map, filter 등을 활용하는 것이다다
+👉 불변성을 지키는 가장 쉬운 방법은 spread 연산자(...), map, filter 등을 활용하는 것이다
 👉 immer 같은 라이브러리를 활용하면 더 쉽게 상태를 관리할 수도 있다
+
+## 함수형 버전
+
+### 전개 연산자
+- 배열을 펼쳐서 새로운 배열을 만들거나, 배열을 합칠 때 사용
+1. 배열 복사	       : const arr2 = [...arr1];
+2. 배열 합치기       : const combined = [...arr1, ...arr2];
+3. 객체 복사	       : const obj2 = {...obj1};
+4. 객체 속성 추가	   : const updated = {...obj, newKey: value};
+5. 함수 인자로 전달	 : sum(...numbers);
+6. 문자열 분해	     : [...str] → ['H', 'e', 'l', 'l', 'o']
+
+### map()  메서드
+- map()은 배열의 각 요소를 변환하여 새로운 배열을 생성하는 메서드.
+- 기존 배열을 변경하지 않고, 각 요소를 원하는 방식으로 가공한 새로운 배열을 반환한다.
+👉 리액트에서 map()은 리스트를 렌더링할 때 필수적으로 사용!
+
+```jsx
+const fruits = ["Apple", "Banana", "Grape"];
+
+function FruitList() {
+  return (
+    <ul>
+      {fruits.map((fruit, index) => (
+        <li key={index}>{fruit}</li>
+      ))}
+    </ul>
+  );
+}
+```
