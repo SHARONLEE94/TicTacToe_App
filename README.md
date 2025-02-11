@@ -103,3 +103,12 @@ function FruitList() {
   );
 }
 ```
+
+### 깃허브 저장소에 배포하기
+1. gh-pages 모듈 설치: npm i gh-pages --save-dev 설치하기
+2. package.json 파일 내부에, 
+  - gh-pages 의존성 설치 됐는지 확인 
+  - "hompage": "https://{깃허브 유저 이름}.github.io/{저장소이름}/" 작성하기
+3. 배포를 위한 script 추가 하기기
+  - "predeploy":"npm run build",
+  - "deploy":"gh-pages -d build",
